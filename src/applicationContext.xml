@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:context="http://www.springframework.org/schema/context"
+		xmlns:tx="http://www.springframework.org/schema/tx"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+				http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+				http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+<!-- 在容器文件中配置各种bean（service，dao，domain，action，数据源） -->
+<!-- bean元素的作用是，当我们的spring框架加载的时候，spring就会自动创建一个bean对象，并放入内存
+其实底层就是 userService userService = new UserService() -->
+<bean id="userService" class="com.service.UserService">
+<property name="name">
+<value>derek</value>
+</property>
+
+<!-- 基本款以上加多一个知识点，容器怎样管理豆豆之间的关系 -->
+<property name="bybservice" ref="bybservice" />
+
+</bean>
+
+
+
+<bean id="bybservice" class="com.service.BybService">
+<property name="name" value="王孟达"/>
+</bean>
+
+
+</beans>  
